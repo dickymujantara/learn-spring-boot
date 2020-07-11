@@ -1,9 +1,6 @@
 package com.example.learnspring.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Mahasiswa {
@@ -13,6 +10,10 @@ public class Mahasiswa {
     private String nama;
     private String jurusan;
     private String nim;
+
+    @Version
+    @Column(name = "optVersion", columnDefinition = "integer DEFAULT 0")
+    private Integer version;
 
     public Long getId() {
         return id;
@@ -44,5 +45,13 @@ public class Mahasiswa {
 
     public void setNim(String nim) {
         this.nim = nim;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }
